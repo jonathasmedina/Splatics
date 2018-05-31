@@ -97,18 +97,22 @@
         android:id="@+id/editText"
         android:layout_width="161dp"
         android:layout_height="32dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="text"
-        tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="74dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/spinner6" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="161dp"
         android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="text"
-        tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="120dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
 </android.support.constraint.ConstraintLayout>
