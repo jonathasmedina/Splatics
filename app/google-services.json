@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "328475334893",
+    "firebase_url": "https://splatics-c2981.firebaseio.com",
+    "project_id": "splatics-c2981",
+    "storage_bucket": "splatics-c2981.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328475334893:android:4f0e12b2fc031692",
+        "android_client_info": {
+          "package_name": "com.example.jonathas.splatics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328475334893-iqqs34du9kjjmc9fk8onofm0d95gn75s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jonathas.splatics",
+            "certificate_hash": "391b80b783c16e53ec1101757fc83baa16f86ce0"
+          }
+        },
+        {
+          "client_id": "328475334893-46tmkkjbkqlq5dlnljev7lgafe4b0d4d.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "328475334893-46tmkkjbkqlq5dlnljev7lgafe4b0d4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3OIrzBniifAaiBywwFDryaFdVgEEluys"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328475334893-46tmkkjbkqlq5dlnljev7lgafe4b0d4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
