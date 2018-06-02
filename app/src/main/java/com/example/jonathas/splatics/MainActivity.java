@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         bt = (Button) findViewById(R.id.button2);
+        radioGroupModo = findViewById(R.id.radioGroup);
 
 
         //ouvinte spinner
@@ -89,13 +90,14 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(MainActivity.this, Tela2.class);
-                intent.putExtra("partida", (Serializable) partida);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("partida", partida);
+                intent.putExtras(bundle);
+
                 startActivity(intent);
             }
         });
 
     }
-
-
 
 }

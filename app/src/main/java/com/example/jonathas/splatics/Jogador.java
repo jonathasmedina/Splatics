@@ -1,6 +1,8 @@
 package com.example.jonathas.splatics;
 
-public class Jogador {
+import java.io.Serializable;
+
+public class Jogador implements Serializable{
     String nick;
     String level;
     boolean aliado;

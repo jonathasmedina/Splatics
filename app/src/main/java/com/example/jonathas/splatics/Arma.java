@@ -1,6 +1,8 @@
 package com.example.jonathas.splatics;
 
-public class Arma {
+import java.io.Serializable;
+
+public class Arma implements Serializable {
     String classe;
     String nome;
     String sub;

@@ -1,9 +1,10 @@
 package com.example.jonathas.splatics;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Partida {
+public class Partida implements Serializable {
     String id;
 
     public Partida() {

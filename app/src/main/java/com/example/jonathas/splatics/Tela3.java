@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +30,9 @@ public class Tela3 extends AppCompatActivity {
     RadioGroup vitDer;
     RadioGroup aliadInim;
 
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,8 @@ public class Tela3 extends AppCompatActivity {
         qtdDeaths = findViewById(R.id.editText2);
         vitDer = findViewById(R.id.radioGroup2);
         aliadInim = findViewById(R.id.radioGroup);
+
+        inicializarFirebase();
 
         Intent intent = getIntent();
         final Partida partida = (Partida) intent.getSerializableExtra("partida");
@@ -96,10 +105,19 @@ public class Tela3 extends AppCompatActivity {
                         break;
                 }
 
+                //inserção
+                databaseReference.child("Partida").child(partida.getId()).setValue(partida);
+
             }
 
             });
 
-
         }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(Tela3.this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.setPersistenceEnabled(true);
+        databaseReference = firebaseDatabase.getReference();
+    }
 }
