@@ -1,6 +1,10 @@
 package com.example.jonathas.splatics;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +33,7 @@ public class Tela3 extends AppCompatActivity {
     EditText qtdDeaths;
     RadioGroup vitDer;
     RadioGroup aliadInim;
+    Button salvarCadOutroBt;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -45,6 +50,8 @@ public class Tela3 extends AppCompatActivity {
         qtdDeaths = findViewById(R.id.editText2);
         vitDer = findViewById(R.id.radioGroup2);
         aliadInim = findViewById(R.id.radioGroup);
+        salvarCadOutroBt = findViewById(R.id.button3);
+
 
         inicializarFirebase();
 
@@ -78,41 +85,64 @@ public class Tela3 extends AppCompatActivity {
             }
         });
 
+        salvarCadOutroBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO mudar de tela carregando os dados do jogador já cadastrado
+                Intent intent = new Intent(Tela3.this, Tela2.class);
+              /*  Bundle bundle = new Bundle();
+                bundle.putSerializable("partida", partida);
+                intent.putExtras(bundle);*/
+                startActivity(intent);
+            }
+        });
+
+
         salvarBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int qtdKills_ = Integer.parseInt(qtdKills.getText().toString());
-                int qtdDeaths_ = Integer.parseInt(qtdDeaths.getText().toString());
 
-                partida.getJogadores().get(posicaoJogSelec).setKtdKills(qtdKills_);
-                partida.getJogadores().get(posicaoJogSelec).setKtdDeaths(qtdDeaths_);
-
-                switch (vitDer.getCheckedRadioButtonId()) {
-                    case R.id.radioButton6:
-                        partida.setVitoria(true);
-                        break;
-                    case R.id.radioButton7:
-                        partida.setVitoria(false);
-                        break;
+                if(qtdDeaths.getText().toString().trim().length() == 0)
+                    qtdDeaths.setError("Preencha o campo");
+                else if (qtdKills.getText().toString().trim().length() == 0){
+                    qtdKills.setError("Preencha o campo");
                 }
+                else{
+                    int qtdKills_ = Integer.parseInt(qtdKills.getText().toString());
+                    int qtdDeaths_ = Integer.parseInt(qtdDeaths.getText().toString());
 
-                switch (aliadInim.getCheckedRadioButtonId()) {
-                    case R.id.radioButton8:
-                        partida.getJogadores().get(posicaoJogSelec).setAliado(false);
-                        break;
-                    case R.id.radioButton9:
-                        partida.getJogadores().get(posicaoJogSelec).setAliado(true);
-                        break;
+                    partida.getJogadores().get(posicaoJogSelec).setKtdKills(qtdKills_);
+                    partida.getJogadores().get(posicaoJogSelec).setKtdDeaths(qtdDeaths_);
+
+                    switch (vitDer.getCheckedRadioButtonId()) {
+                        case R.id.radioButton6:
+                            partida.setVitoria(true);
+                            break;
+                        case R.id.radioButton7:
+                            partida.setVitoria(false);
+                            break;
+                    }
+
+                    switch (aliadInim.getCheckedRadioButtonId()) {
+                        case R.id.radioButton8:
+                            partida.getJogadores().get(posicaoJogSelec).setAliado(false);
+                            break;
+                        case R.id.radioButton9:
+                            partida.getJogadores().get(posicaoJogSelec).setAliado(true);
+                            break;
+                    }
+
+                    //inserção
+                    databaseReference.child("Partida").child(partida.getId()).setValue(partida);
+                    Intent intent = new Intent(Tela3.this, MainActivity.class);
+                    alert(intent);
+
+
                 }
-
-                //inserção
-                databaseReference.child("Partida").child(partida.getId()).setValue(partida);
-
             }
+        });
 
-            });
-
-        }
+    }
 
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(Tela3.this);
@@ -120,4 +150,25 @@ public class Tela3 extends AppCompatActivity {
         firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
     }
+
+    private void alert(final Intent intent){
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+        builder.setTitle("Cadastro efetuado!")
+                .setMessage("Dados salvos no banco")
+                .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert).show();
+
+    }
+
 }

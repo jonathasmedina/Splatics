@@ -29,12 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String[] MODOS = new String[] {"Rainmaker", "Splatzone", "Clam Blitz", "Tower Control"};
 
-        //TODO gerar módulo de cadastro de armas e roupas
-        //TODO concluir configuração de cadastros dos módulos das partidas
-        //TODO um nó no banco só para as armas;
-        //TODO um nó no banco só para as roupas;
-        //puxar armas e roupas do banco! fazer tela de cadastro delas
-
+        //TODO gerar módulo de cadastro de armas e roupas - puxar do wiki
 
         bt = (Button) findViewById(R.id.button2);
         radioGroupModo = findViewById(R.id.radioGroup);
@@ -95,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
 
                 startActivity(intent);
+                finish();
             }
         });
 

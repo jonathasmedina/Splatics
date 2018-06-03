@@ -28,6 +28,7 @@
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="wrap_content"
+            android:checked="true"
             android:layout_height="wrap_content"
             android:text="Turf War" />
 
@@ -36,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RainMaker"
+            android:checked="true"
             tools:layout_editor_absoluteX="60dp"
             tools:layout_editor_absoluteY="35dp" />
 

@@ -15,6 +15,9 @@ public class Jogador implements Serializable{
         return arma;
     }
 
+    public Jogador() {
+    }
+
     public void setArma(Arma arma) {
         this.arma = arma;
     }

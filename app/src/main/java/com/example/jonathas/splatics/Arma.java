@@ -8,6 +8,9 @@ public class Arma implements Serializable {
     String sub;
     String special;
 
+    public Arma() {
+    }
+
     public String getClasse() {
         return classe;
     }
