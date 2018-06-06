@@ -4,14 +4,19 @@ import android.content.Intent;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,6 +26,9 @@ public class Tela2 extends AppCompatActivity implements Serializable {
 
     Button recDadosBt;
 
+    //TODO tela de cadastro das abilities: 3 seções head, clothing e shoes. cada seção com 4 botões (cogitar figura)- 1 para o slot principal
+    // e 3 para os sub. Ao clicar no slot, abrir as opções de ability para inserir (hability, não roupa/marca).
+    //TODO botão recuperar dados cadastrados
     Button salvarProxTelaBt;
     EditText nick;
     String selecionado = "";
@@ -34,6 +42,9 @@ public class Tela2 extends AppCompatActivity implements Serializable {
     Spinner spinnerRank, spinnerArma, spinnerAbilities1, spinnerAbilities2, spinnerAbilities3, spinnerAbilities4, spinnerAbilities5, spinnerAbilities6, spinnerAbilities7, spinnerAbilities8, spinnerAbilities9, spinnerAbilities10, spinnerAbilities11, spinnerAbilities12;
     ArrayList<Jogador> jogadorArrayList = new ArrayList<>();
 
+    ImageView imageView;
+    TextView textViewCad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,21 +55,21 @@ public class Tela2 extends AppCompatActivity implements Serializable {
         nick = findViewById(R.id.editText3);
         spinnerArma = findViewById(R.id.spinner2);
 
-        spinnerAbilities1 = findViewById(R.id.spinner3);
-        spinnerAbilities2 = findViewById(R.id.spinner4);
-        spinnerAbilities3 = findViewById(R.id.spinner5);
-        spinnerAbilities4 = findViewById(R.id.spinner7);
-        spinnerAbilities5 = findViewById(R.id.spinner10);
-        spinnerAbilities6 = findViewById(R.id.spinner11);
-        spinnerAbilities7 = findViewById(R.id.spinner12);
-        spinnerAbilities8 = findViewById(R.id.spinner13);
-        spinnerAbilities9 = findViewById(R.id.spinner14);
-        spinnerAbilities10 = findViewById(R.id.spinner15);
-        spinnerAbilities11 = findViewById(R.id.spinner16);
-        spinnerAbilities12 = findViewById(R.id.spinner9);
+        textViewCad = (TextView) findViewById(R.id.textView15);
+        SpannableString content = new SpannableString("Cadastrar Abilities (opcional)");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        textViewCad.setText(content);
+        textViewCad.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent((Tela2.this), TelaAbilities.class);
+                startActivity(intent);
+                //TODO popular intent antes..e receber retorno
 
-       // spinnerShoes = findViewById(R.id.spinner7);
+            }
+        });
+
         spinnerRank = findViewById(R.id.spinner8);
+
 
         popularSpinnerArma(spinnerArma);
         spinnerArma.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -78,7 +89,7 @@ public class Tela2 extends AppCompatActivity implements Serializable {
 
         popularSpinnerRank(dadosRank, spinnerRank);
 
-        popularSpinnerAbilities(dadosAbilities, spinnerAbilities1);
+        //popularSpinnerAbilities(dadosAbilities, spinnerAbilities1);
 
 
         Intent intent = getIntent();
@@ -125,18 +136,8 @@ public class Tela2 extends AppCompatActivity implements Serializable {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinnerAbilities1.setAdapter(adapter);
         spinnerAbilities2.setAdapter(adapter);
-        spinnerAbilities3.setAdapter(adapter);
-        spinnerAbilities4.setAdapter(adapter);
-        spinnerAbilities5.setAdapter(adapter);
-        spinnerAbilities6.setAdapter(adapter);
-        spinnerAbilities7.setAdapter(adapter);
         spinnerAbilities8.setAdapter(adapter);
-        spinnerAbilities9.setAdapter(adapter);
-        spinnerAbilities10.setAdapter(adapter);
-        spinnerAbilities11.setAdapter(adapter);
-        spinnerAbilities12.setAdapter(adapter);
 
         spinnerAbilities1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -163,7 +164,6 @@ public class Tela2 extends AppCompatActivity implements Serializable {
                                        int position, long id) {
                 Log.v("item", (String) parent.getItemAtPosition(position));
                 selecionado = (String) parent.getItemAtPosition(position);
-
             }
 
             @Override
