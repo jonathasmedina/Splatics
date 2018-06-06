@@ -1,5 +1,5 @@
 package com.example.jonathas.splatics;
-
+//TODO criar nova tela com spinneres (?) das abilities. na 2: "Cadastrar abilities (opcional)"
 import android.content.Intent;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +32,7 @@ public class Tela2 extends AppCompatActivity implements Serializable {
     static final String[] dadosRank = new String[] {"X", "S+0 a S+9", "S", "A- a A+", "B- a B+", "C- a C+"};
     static final String[] dadosAbilities = new String[] {"-", "Bomb Defense Up","Cold-Blooded","Comeback","Drop Roller","Haunt","Ink Recovery Up","Ink Resistance Up","Ink Saver (Main)","Ink Saver (Sub)","Last-Ditch Effort","Ninja Squid","Object Shredder","Opening Gambit","Quick Respawn","Quick Super Jump","Respawn Punisher","Run Speed Up","Special Charge Up","Special Power Up","Special Saver","Stealth Jump","Power Up","Swim Speed Up","Tenacity","Thermal Ink"};
     Spinner spinnerRank, spinnerArma, spinnerAbilities1, spinnerAbilities2, spinnerAbilities3, spinnerAbilities4, spinnerAbilities5, spinnerAbilities6, spinnerAbilities7, spinnerAbilities8, spinnerAbilities9, spinnerAbilities10, spinnerAbilities11, spinnerAbilities12;
+    ArrayList<Jogador> jogadorArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +76,6 @@ public class Tela2 extends AppCompatActivity implements Serializable {
             }
         });
 
-
-        //TODO popular spinners
         popularSpinnerRank(dadosRank, spinnerRank);
 
         popularSpinnerAbilities(dadosAbilities, spinnerAbilities1);
@@ -85,7 +84,6 @@ public class Tela2 extends AppCompatActivity implements Serializable {
         Intent intent = getIntent();
         final Partida partida = (Partida) intent.getSerializableExtra("partida");
 
-
         salvarProxTelaBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,23 +91,19 @@ public class Tela2 extends AppCompatActivity implements Serializable {
                 if(nick.getText().toString().trim().length() == 0)
                     nick.setError("Preencha o campo");
                 else {
-                    ArrayList<Jogador> jogadorArrayList = new ArrayList<>();
                     Jogador jogador = new Jogador();
                     jogador.setNick(nick.getText().toString());
-                    //TODO implementar level
-            //        spinnerVal = valorSelecionadoSpinner(spinnerLevel);
-            //        jogador.setLevel(spinnerVal);
-                    //spinnerVal = valorSelecionadoSpinner(spinnerArma);
+
                     Arma arma = new Arma();
                     arma.setNome(armaSelecionada);
                     jogador.setArma(arma);
-                    jogadorArrayList.add(jogador);
 
-                    partida.setJogadores(jogadorArrayList);
+                    jogador.setRank(rankeSelecionado);
+
+                    partida.getJogadores().add(jogador);
 
 
                     Intent intent = new Intent(Tela2.this, Tela3.class);
-
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("partida", partida);
                     intent.putExtras(bundle);

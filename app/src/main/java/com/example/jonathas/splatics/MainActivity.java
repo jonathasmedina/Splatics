@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         final String[] MODOS = new String[] {"Rainmaker", "Splatzone", "Clam Blitz", "Tower Control"};
 
-        //TODO gerar módulo de cadastro de armas e roupas - puxar do wiki
-
         bt = (Button) findViewById(R.id.button2);
         radioGroupModo = findViewById(R.id.radioGroup);
 

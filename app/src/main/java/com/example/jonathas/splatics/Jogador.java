@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Jogador implements Serializable{
     String nick;
-    String level;
+    String rank;
     boolean aliado;
     Roupa roupa;
     int ktdKills;
@@ -30,12 +30,12 @@ public class Jogador implements Serializable{
         this.nick = nick;
     }
 
-    public String getLevel() {
-        return level;
+    public String getRank() {
+        return rank;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 
     public boolean isAliado() {

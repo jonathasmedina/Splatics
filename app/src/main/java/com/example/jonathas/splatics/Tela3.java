@@ -1,7 +1,6 @@
 package com.example.jonathas.splatics;
-
+//TODO criar nós no firebase de abilities, fases, armas..etc
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -37,7 +36,7 @@ public class Tela3 extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-
+    Partida partida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +51,12 @@ public class Tela3 extends AppCompatActivity {
         aliadInim = findViewById(R.id.radioGroup);
         salvarCadOutroBt = findViewById(R.id.button3);
 
+        Intent intent = getIntent();
+        partida = (Partida) intent.getSerializableExtra("partida");
 
         inicializarFirebase();
 
-        Intent intent = getIntent();
-        final Partida partida = (Partida) intent.getSerializableExtra("partida");
+        salvarBt.setOnClickListener(ouvinte);
 
         List<String> jogadoresNomes = new ArrayList<>();
         for (Jogador j: partida.getJogadores()){
@@ -88,67 +88,67 @@ public class Tela3 extends AppCompatActivity {
         salvarCadOutroBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO mudar de tela carregando os dados do jogador já cadastrado
+                verificarCamposPegarValores();
                 Intent intent = new Intent(Tela3.this, Tela2.class);
-              /*  Bundle bundle = new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putSerializable("partida", partida);
-                intent.putExtras(bundle);*/
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
-
-
-        salvarBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(qtdDeaths.getText().toString().trim().length() == 0)
-                    qtdDeaths.setError("Preencha o campo");
-                else if (qtdKills.getText().toString().trim().length() == 0){
-                    qtdKills.setError("Preencha o campo");
-                }
-                else{
-                    int qtdKills_ = Integer.parseInt(qtdKills.getText().toString());
-                    int qtdDeaths_ = Integer.parseInt(qtdDeaths.getText().toString());
-
-                    partida.getJogadores().get(posicaoJogSelec).setKtdKills(qtdKills_);
-                    partida.getJogadores().get(posicaoJogSelec).setKtdDeaths(qtdDeaths_);
-
-                    switch (vitDer.getCheckedRadioButtonId()) {
-                        case R.id.radioButton6:
-                            partida.setVitoria(true);
-                            break;
-                        case R.id.radioButton7:
-                            partida.setVitoria(false);
-                            break;
-                    }
-
-                    switch (aliadInim.getCheckedRadioButtonId()) {
-                        case R.id.radioButton8:
-                            partida.getJogadores().get(posicaoJogSelec).setAliado(false);
-                            break;
-                        case R.id.radioButton9:
-                            partida.getJogadores().get(posicaoJogSelec).setAliado(true);
-                            break;
-                    }
-
-                    //inserção
-                    databaseReference.child("Partida").child(partida.getId()).setValue(partida);
-                    Intent intent = new Intent(Tela3.this, MainActivity.class);
-                    alert(intent);
-
-
-                }
-            }
-        });
-
     }
 
+    private void verificarCamposPegarValores() {
+
+        if(qtdDeaths.getText().toString().trim().length() == 0)
+            qtdDeaths.setError("Preencha o campo");
+        else if (qtdKills.getText().toString().trim().length() == 0){
+            qtdKills.setError("Preencha o campo");
+        }
+        else{
+            int qtdKills_ = Integer.parseInt(qtdKills.getText().toString());
+            int qtdDeaths_ = Integer.parseInt(qtdDeaths.getText().toString());
+
+            partida.getJogadores().get(posicaoJogSelec).setKtdKills(qtdKills_);
+            partida.getJogadores().get(posicaoJogSelec).setKtdDeaths(qtdDeaths_);
+
+            switch (vitDer.getCheckedRadioButtonId()) {
+                case R.id.radioButton6:
+                    partida.setVitoria(true);
+                    break;
+                case R.id.radioButton7:
+                    partida.setVitoria(false);
+                    break;
+            }
+
+            switch (aliadInim.getCheckedRadioButtonId()) {
+                case R.id.radioButton8:
+                    partida.getJogadores().get(posicaoJogSelec).setAliado(false);
+                    break;
+                case R.id.radioButton9:
+                    partida.getJogadores().get(posicaoJogSelec).setAliado(true);
+                    break;
+            }
+        }
+    }
+
+    View.OnClickListener ouvinte = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            verificarCamposPegarValores();
+            //inserção
+            databaseReference.child("Partida").child(partida.getId()).setValue(partida);
+            Intent intent = new Intent(Tela3.this, MainActivity.class);
+            alert(intent);
+        }
+    };
+
     private void inicializarFirebase() {
-        FirebaseApp.initializeApp(Tela3.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
-        databaseReference = firebaseDatabase.getReference();
+            FirebaseApp.initializeApp(Tela3.this);
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            //TODO corrigir salvar sem internet para mais de 1! quando volta na tela 3 fecha a app
+//            firebaseDatabase.setPersistenceEnabled(true);
+            databaseReference = firebaseDatabase.getReference();
     }
 
     private void alert(final Intent intent){
@@ -170,5 +170,4 @@ public class Tela3 extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert).show();
 
     }
-
 }
