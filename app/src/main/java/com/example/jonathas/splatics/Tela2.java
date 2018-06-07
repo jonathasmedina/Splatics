@@ -155,7 +155,6 @@ public class Tela2 extends AppCompatActivity implements Serializable {
         });
     }
 
-
     public String valorSelecionadoSpinner(Spinner spinner){
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -174,8 +173,6 @@ public class Tela2 extends AppCompatActivity implements Serializable {
         return selecionado;
 
     }
-
-
 
     private void popularSpinnerRank(String[] dadosRank, Spinner spinnerRank) {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Tela2.this,

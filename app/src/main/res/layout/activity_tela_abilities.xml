@@ -6,11 +6,340 @@
     android:layout_height="match_parent"
     tools:context=".TelaAbilities">
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="171dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Ability:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="216dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:text="Slots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="44dp"
+        android:text="Clique na imagem para adicionar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="368dp"
+        android:id="@+id/gridLayout1"
+        android:layout_height="346dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+        <ImageView
+            android:id="@+id/s_ability_ability_doubler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="0"
+            app:layout_row="0"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_ability_doubler" />
+
+        <ImageView
+            android:id="@+id/s_ability_cold_blooded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="1"
+            app:layout_row="0"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_cold_blooded" />
+
+        <ImageView
+            android:id="@+id/s_ability_comeback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="2"
+            app:layout_row="0"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_comeback" />
+
+        <ImageView
+            android:id="@+id/s_ability_ink_recovery_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:layout_column="3"
+            app:layout_row="0"
+            app:srcCompat="@drawable/s_ability_ink_recovery_up" />
+
+        <ImageView
+            android:id="@+id/s_ability_ink_saver_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="4"
+            app:layout_row="0"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_ink_saver_sub" />
+
+        <ImageView
+            android:id="@+id/s_ability_ninja_squid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="0"
+            app:layout_row="4"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_ninja_squid" />
+
+        <ImageView
+            android:id="@+id/s_ability_quick_super_jump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="0"
+            app:layout_row="1"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_quick_super_jump" />
+
+        <ImageView
+            android:id="@+id/s_ability_run_speed_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="1"
+            app:layout_row="1"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_run_speed_up" />
+
+        <ImageView
+            android:id="@+id/s_ability_special_charge_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="2"
+            app:layout_row="1"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_special_charge_up" />
+
+        <ImageView
+            android:id="@+id/s_ability_special_saver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="3"
+            app:layout_row="1"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_special_saver" />
+
+        <ImageView
+            android:id="@+id/s_ability_swim_speed_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="4"
+            app:layout_row="1"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_swim_speed_up" />
+
+        <ImageView
+            android:id="@+id/s_ability_tenacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="0"
+            app:layout_row="2"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/s_ability_tenacity" />
+
+        <ImageView
+            android:id="@+id/bomb_defense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="1"
+            app:layout_row="2"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/bomb_defense" />
+
+        <ImageView
+            android:id="@+id/drop_roller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="2"
+            app:layout_row="2"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/drop_roller" />
+
+        <ImageView
+            android:id="@+id/ink_saver_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="3"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:layout_row="2"
+            app:srcCompat="@drawable/ink_saver_main" />
+
+        <ImageView
+            android:id="@+id/ink_resistence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="4"
+            app:layout_row="2"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/ink_resistence" />
+
+        <ImageView
+            android:id="@+id/last_ditch_effort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="0"
+            app:layout_row="3"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/last_ditch_effort" />
+
+        <ImageView
+            android:id="@+id/object_shredder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="1"
+            app:layout_row="3"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/object_shredder" />
+
+        <ImageView
+            android:id="@+id/opening_gambit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="2"
+            app:layout_row="3"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/opening_gambit" />
+
+        <ImageView
+            android:id="@+id/quick_respawn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="3"
+            app:layout_row="3"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/quick_respawn" />
+
+        <ImageView
+            android:id="@+id/respawn_punisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="4"
+            app:layout_row="3"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/respawn_punisher" />
+
+        <ImageView
+            android:id="@+id/special_power_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="0"
+            app:layout_row="4"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/special_power_up" />
+
+        <ImageView
+            android:id="@+id/stealth_jump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="1"
+            app:layout_row="4"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/stealth_jump" />
+
+        <ImageView
+            android:id="@+id/sub_power_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="2"
+            app:layout_row="4"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/sub_power_up" />
+
+        <ImageView
+            android:id="@+id/thermal_ink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_column="3"
+            app:layout_row="4"
+            android:adjustViewBounds="true"
+            android:maxWidth="66dp"
+            android:maxHeight="66dp"
+            app:srcCompat="@drawable/thermal_ink" />
+    </android.support.v7.widget.GridLayout>
+
+    <ImageView
+        android:id="@+id/question_mark1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="66dp"
+        android:maxWidth="66dp"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3"
+        app:srcCompat="@drawable/question_mark" />
+
 </android.support.constraint.ConstraintLayout>
